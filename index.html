@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo de cuotas</title>
+    <link rel="stylesheet" href="./css/phone.css">
+</head>
+<body>
+    <header>
+        <span>Logo</span>
+        <h1>Calculo de cuotas y capacidad de endeudamiento</h1>
+    </header>
+    <main>
+        <section class="cuotas">
+            <h2 class="cuotas__title">Calculo de cuotas</h2>
+            <form class="cuotas__form" action="">
+
+                <label class="cuotas__input" for="InputTipoInteres">
+                    <span>Tipo de interes:</span>
+                    <select name="interes" id="InputTipoInteres">
+                        <option value="simple">Simple</option>
+                        <option value="compuesto">Compuesto</option>
+                    </select>
+                </label>
+
+                <label class="cuotas__input" for="InputCapital">
+                    <span>Capital:</span>
+                    <input type="number" id="InputCapital">
+                </label>
+
+                <label class="cuotas__input" for="InputInteres">
+                    <span>Interes(%):</span>
+                    <input type="number" id="InputInteres">
+                </label>
+
+                <label class="cuotas__input" for="InputTime">
+                    <span>Tiempo:</span>
+                    <input list="time" id="InputTime">
+                    <datalist id="time">
+                        <option value="1">1 mes</option>
+                        <option value="2">2 meses</option>
+                        <option value="3">3 meses</option>
+                        <option value="6">6 meses</option>
+                        <option value="10">10 meses</option>
+                        <option value="12">1 año</option>
+                        <option value="18">1 año y medio</option>
+                        <option value="24">2 años</option>
+                        <option value="36">3 años</option>
+                    </datalist>
+                </label>
+
+                <button class="button" type="button" onclick="calcularCuotas()">Calcule el valor de sus cuotas</button>
+
+                <article id="OutputCuota"></article>
+            </form>
+        </section>
+
+        <section class="CE">
+            <h2 class="CE__title">Capacidad de endeudamiento</h2>
+            <form class="CE__form" action="">
+
+                <label class="CE__input" for="InputIngresos">
+                    <span>Ingresos fijos mensuales:</span>
+                    <input type="number" id="InputIngresos">
+                </label>
+
+                <label class="CE__input" for="InputGastos">
+                    <span>Gastos fijos mensuales:</span>
+                    <input type="number" id="InputGastos">
+                </label>
+
+                <button class="button" type="button">Calcule su capacidad de endeudamiento</button>
+
+                <article></article>
+            </form>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="./index.js"></script>
+</body>
+</html>
