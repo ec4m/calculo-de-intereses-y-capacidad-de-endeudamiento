@@ -1,4 +1,5 @@
 //funciones de utilidad
+let valorCuota = 0;
 //Encontrar el maximo valor de un array
 function maximoValorArray(array) {
     const posicion = array.length - 1;
@@ -70,13 +71,15 @@ function calcularCuotas() {
 
         const resultadoSimple = document.getElementById("OutputCuota");
         resultadoSimple.innerText = `Para sacar un credito por $${capitalValue} a un plazo de ${simple.cuotas} meses y una tasa de interes mensual del ${simple.interes}%, tendras que pagar cuotas de $${simple.valorCuotas}. Para terminar devolviendo un total de $${simple.total}.`;
-
+        valorCuota = simple.valorCuotas;
+        
     } else if (tipoIntValue == "compuesto") {  //calculo de cuotas compuestas
         const compuesto = calcularCuotasInteresCompuesto(capitalValue, interesValue, timeValue);
         console.log(compuesto);
-
+        
         const resultadoSimple = document.getElementById("OutputCuota");
         resultadoSimple.innerText = `Para sacar un credito por $${capitalValue} a un plazo de ${compuesto.cuotas} meses y una tasa de interes mensual del ${compuesto.interes}%, tendras que pagar cuotas como maximo de ${compuesto.valorMaxCuotas}. Para terminar devolviendo un total de $${compuesto.total}.`;
+        valorCuota = compuesto.valorMaxCuotas;
     } else {
         console.log("Tipo de interes no selecionado");
     }
@@ -85,14 +88,21 @@ function calcularCuotas() {
 
 //Capacidad de endeudamiento
 
-function calcularCE(ingresos, gastos, cuota) {
+function calcularCE() {
 
-    const CE = (ingresos - gastos) * 0.35;
+    const ingresos = document.getElementById("InputIngresos");
+    const ingresosValue = ingresos.value;
+    const gastos = document.getElementById("InputGastos");
+    const gastosValue = gastos.value;
+    
+    const CE = (ingresosValue - gastosValue) * 0.35;
 
-    if (cuota < CE) {
-        console.log(`Tu capacidad de endeudamiento es de $${CE}, por lo tanto el credito SI sera aceptado por el Banco.`)
+    const resultadoCE = document.getElementById("OutputCE");
+
+    if (valorCuota < CE) {
+        resultadoCE.innerText = `Tu capacidad de endeudamiento es de $${CE}. Puedes pagar facilmente cuotas de ${valorCuota}, por lo tanto el credito SI sera aceptado por el Banco.`;
     } else {
-        console.log(`Tu capacidad de endeudamiento es de $${CE}, por lo tanto el credito NO sera aprobado por el Banco. Lo sentimos.`)
+        resultadoCE.innerText = `Tu capacidad de endeudamiento es de $${CE}. No puedes pagar facilmente cuotas de ${valorCuota}, por lo tanto el credito NO sera aprobado por el Banco. Lo sentimos.`
     }
     
 }
