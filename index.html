@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
     <title>Calculo de cuotas</title>
-    <link rel="stylesheet" href="./css/phone.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/desktop.css" media="screen and (min-width: 800px)">
 </head>
 <body>
-    <header>
-        <span>Logo</span>
+    <header class="header-cuotas">
+        <span></span>
         <h1>Calculo de cuotas y capacidad de endeudamiento</h1>
     </header>
-    <main>
+    <main class="main-cuotas">
         <section class="cuotas">
             <h2 class="cuotas__title">Calculo de cuotas</h2>
             <form class="cuotas__form" action="">
@@ -51,9 +55,10 @@
                     </datalist>
                 </label>
 
-                <button class="button" type="button" onclick="calcularCuotas()">Calcule el valor de sus cuotas</button>
+                <article class="outputCuota" id="OutputCuota"></article>
 
-                <article id="OutputCuota"></article>
+                <button class="button button--cuota" type="button" onclick="calcularCuotas()">Calcule el valor de sus cuotas</button>
+
             </form>
         </section>
 
@@ -63,21 +68,48 @@
 
                 <label class="CE__input" for="InputIngresos">
                     <span>Ingresos fijos mensuales:</span>
-                    <input type="number" id="InputIngresos">
+                    <div class="container-div">
+                        <input type="number" id="InputIngresos">
+                    </div>
                 </label>
 
                 <label class="CE__input" for="InputGastos">
                     <span>Gastos fijos mensuales:</span>
-                    <input type="number" id="InputGastos">
+                    <div class="container-div">
+                        <input type="number" id="InputGastos">
+                    </div>
                 </label>
 
-                <button class="button" type="button" onclick="calcularCE()">Calcule su capacidad de endeudamiento</button>
+                <article class="outputCE" id="OutputCE"></article>
+                
+                <button class="button button--CE" type="button" onclick="calcularCE()">Calcule su capacidad de endeudamiento</button>
 
-                <article id="OutputCE"></article>
             </form>
         </section>
     </main>
-    <footer>
+    <footer class="footer-cuotas">
+        <ul class="footer-cuotas__left">
+            <li>
+                <a href="">Mas información</a>
+            </li>
+            <li>
+                <a href="">Bancos asociados</a>
+            </li>
+            <li>
+                <a href="">Creditos para empresas</a>
+            </li>
+        </ul>
+        <ul class="footer-cuotas__right">
+            <li>
+                <a href="https://github.com/Ecangarita/calculo-de-intereses-y-capacidad-de-endeudamiento">Información del repositorio</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/AngaritaEc">Twitter del creador</a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/elian-camilo-angarita-sanguino-0187a9230/">Linkedin</a>
+            </li>
+        </ul>
 
     </footer>
     <script src="./index.js"></script>
